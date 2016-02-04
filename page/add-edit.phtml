@@ -21,7 +21,7 @@ function error_field($title, array $errors) {
 
 <h1>
     <?php if ($edit): ?>
-        <?php echo Utils::escape($foc->getTitle()); ?>
+        <?php echo Utils::escape($Users->getUsername()); ?>
     <?php else: ?>
         Add New User
     <?php endif; ?>
@@ -40,31 +40,19 @@ function error_field($title, array $errors) {
     <fieldset>
         <div class="field">
             <label>Username:</label>
-            <input type="text" name="foc[username]" value="<?php echo Utils::escape($foc->getTitle()); ?>"
+            <input type="text" name="Users[username]" value="<?php echo Utils::escape($Users->getUsername()); ?>"
                    class="text<?php echo error_field('username', $errors); ?>"/>
-        </div>
-
-          <div class="field">
-            <label>First Name:</label>
-            <input type="text" name="foc[firstname]" value="<?php echo Utils::escape($foc->getFirstname()); ?>"
-                   class="text<?php echo error_field('firstname', $errors); ?>"/>
-        </div>
-
-        <div class="field">
-            <label>Last Name:</label>
-            <input type="text" name="foc[lastname]" value="<?php echo Utils::escape($foc->getLastname()); ?>"
-                   class="text<?php echo error_field('lastname', $errors); ?>"/>
         </div>
 
         <div class="field">
             <label>Email:</label>
-            <input type="text" name="foc[email]" value="<?php echo Utils::escape($foc->getEmail()); ?>"
+            <input type="text" name="Users[email]" value="<?php echo Utils::escape($Users->getEmail()); ?>"
                    class="text<?php echo error_field('email', $errors); ?>"/>
         </div>
 
         <div class="field">
             <label>Password:</label>
-            <input type="text" name="foc[password]" value="<?php echo Utils::escape($foc->getPassword()); ?>"
+            <input type="text" name="Users[password]" value="<?php echo Utils::escape($Users->getPassword()); ?>"
                    class="text<?php echo error_field('password', $errors); ?>"/>
         </div>
 

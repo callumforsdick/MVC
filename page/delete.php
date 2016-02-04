@@ -1,9 +1,9 @@
 <?php
 
-$foc = Utils::getFocByGetId();
+$Users = Utils::getUsersByGetId();
 
-$dao = new FocDao();
-$dao->delete($foc->getId());
+$dao = new UsersDao();
+$dao->delete($Users->getId());
 Flash::addFlash('User deleted successfully.');
 
-Utils::redirect('list', array('status' => $foc->getStatus()));
+Utils::redirect('list', array('status' => $Users->getStatus()));

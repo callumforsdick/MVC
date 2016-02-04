@@ -10,31 +10,32 @@ final class FocValidator {
 
     /**
      * Validate the given {@link Foc} instance.
-     * @param FOc $foc {@link Foc} instance to be validated
+     * @param FOc $Users
+     *  {@link Foc} instance to be validated
      * @return array array of {@link Error} s
      */
-    public static function validate(Foc $foc) {
+    public static function validate(Users $Users) {
         $errors = array();
-        if (!$foc->getCreatedOn()) {
+        if (!$Users->getCreatedOn()) {
             $errors[] = new Error('createdOn', 'Empty or invalid Created On.');
         }
-        if (!$foc->getLastModifiedOn()) {
+        if (!$Users->getLastModifiedOn()) {
             $errors[] = new Error('lastModifiedOn', 'Empty or invalid Last Modified On.');
         }
-        if (!trim($foc->getTitle())) {
+        if (!trim($Users->getTitle())) {
             $errors[] = new Error('title', 'Title cannot be empty.');
         }
-        if (!$foc->getDueOn()) {
+        if (!$Users->getDueOn()) {
             $errors[] = new Error('dueOn', 'Empty or invalid Due On.');
         }
-        if (!trim($foc->getPriority())) {
+        if (!trim($Users->getPriority())) {
             $errors[] = new Error('priority', 'Priority cannot be empty.');
-        } elseif (!self::isValidPriority($foc->getPriority())) {
+        } elseif (!self::isValidPriority($Users->getPriority())) {
             $errors[] = new Error('priority', 'Invalid Priority set.');
         }
-        if (!trim($foc->getStatus())) {
+        if (!trim($Users->getStatus())) {
             $errors[] = new Error('status', 'Status cannot be empty.');
-        } elseif (!self::isValidStatus($foc->getStatus())) {
+        } elseif (!self::isValidStatus($Users->getStatus())) {
             $errors[] = new Error('status', 'Invalid Status set.');
         }
         return $errors;
@@ -63,11 +64,11 @@ final class FocValidator {
     }
 
     private static function isValidStatus($status) {
-        return in_array($status, foc::allStatuses());
+        return in_array($status, Users::allStatuses());
     }
 
     private static function isValidPriority($priority) {
-        return in_array($priority, foc::allPriorities());
+        return in_array($priority, Users::allPriorities());
     }
 
 }

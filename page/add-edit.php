@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <head>
-    <title>foc</title>
+    <title>Users</title>
 </head>
 <?php
 $errors = array();
-$foc = null;
+$Users = null;
 $edit = array_key_exists('id', $_GET);
 if ($edit) {
-    $foc = Utils::getFocByGetId();
+    $Users = Utils::getFocByGetId();
 } else {
     // set defaults
-    $foc = new Foc();
-    $foc->setPriority(Foc::PRIORITY_MEDIUM);
+    $Users = new Foc();
+    $Users->setPriority(Foc::PRIORITY_MEDIUM);
     $dueOn = new DateTime("+1 day");
     $dueOn->setTime(0, 0, 0);
-    $foc->setDueOn($dueOn);
+    $Users->setDueOn($dueOn);
 }
 
 if (array_key_exists('cancel', $_POST)) {
     // redirect
-    Utils::redirect('detail', array('id' => $foc->getId()));
+    Utils::redirect('detail', array('id' => $Users->getId()));
 } elseif (array_key_exists('save', $_POST)) {
     // for security reasons, do not map the whole $_POST['foc']
     $data = array(
-        'username' => $_POST['foc']['username'],
-        'firsname' => $_POST['foc']['firsname'],
-        'lastname' => $_POST['foc']['lastname'],
-        'email' => $_POST['foc']['email'],
-        'password' => $_POST['foc']['password'],
+        'username' => $_POST['Users']['username'],
+        'firsname' => $_POST['Users']['firsname'],
+        'lastname' => $_POST['Users']['lastname'],
+        'email' => $_POST['Users']['email'],
+        'password' => $_POST['Users']['password'],
     );
         ;
     // map
-    FocMapper::map($foc, $data);
+    UsersMapper::map($Users, $data);
     // validate
-    $errors = FocValidator::validate($foc);
+    $errors = UsersValidator::validate($Users);
     // validate
     if (empty($errors)) {
         // save
         $dao = new FocDao();
-        $foc = $dao->save($foc);
+        $Users = $dao->save($Users);
         Flash::addFlash('Changes saved successfully.');
         // redirect
-        Utils::redirect('detail', array('id' => $foc->getId()));
+        Utils::redirect('detail', array('id' => $Users->getId()));
     }
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>foc</title>
+    <title>User Manager</title>
 </head>
 <?php
 //require('header.php');
@@ -58,11 +58,11 @@ final class Index {
             'Error' => '../validation/Error.php',
             'Flash' => '../flash/Flash.php',
             'NotFoundException' => '../exception/NotFoundException.php',
-            'FocDao' => '../dao/FocDao.php',
-            'FocMapper' => '../mapping/FocMapper.php',
-            'Foc' => '../model/Foc.php',
-            'FocSearchCriteria' => '../dao/FocSearchCriteria.php',
-            'FocValidator' => '../validation/FocValidator.php',
+            'UsersDao' => '../dao/FocDao.php',
+            'UsersMapper' => '../mapping/FocMapper.php',
+            'Users' => '../model/Foc.php',
+            'UsersSearchCriteria' => '../dao/FocSearchCriteria.php',
+            'UsersValidator' => '../validation/FocValidator.php',
             'Utils' => '../util/Utils.php',
         );
         if (!array_key_exists($name, $classes)) {

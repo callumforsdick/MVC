@@ -4,7 +4,7 @@
 // variables:
 //  $title - page title
 //  $status - status of Users to be displayed
-//  $foc - Foc to be displayed
+//  $Users - Foc to be displayed
 
 ?>
 
@@ -13,26 +13,26 @@
     <?php echo $title; ?>
 </h1>
 
-<?php if (empty($foc)): ?>
+<?php if (empty($Users)): ?>
     <p>No items found.</p>
 <?php else: ?>
     <ul class="list">
-        <?php foreach ($foc as $foc): ?>
-            <?php /* @var $foc foc */ ?>
-            <?php $tooLate = $status == Foc::STATUS_PENDING && $foc->getDueOn() < new DateTime(); ?>
+        <?php foreach ($Users as $Users): ?>
+            <?php /* @var $Users foc */ ?>
+            <?php $tooLate = $status == Users::STATUS_PENDING && $Users->getDueOn() < new DateTime(); ?>
             <li>
                 <?php if ($tooLate): ?>
                     <img src="img/exclamation.png" alt="" title="Should be already done!" />
                 <?php endif; ?>
-                <img src="img/priority/<?php echo $foc->getPriority(); ?>.png" alt="Priority <?php echo $foc->getPriority(); ?>" title="Priority <?php echo $foc->getPriority(); ?>" />
-                <h3><a href="<?php echo Utils::createLink('detail', array('id' => $foc->getId())) ?>"><?php echo Utils::escape($foc->getTitle()); ?></a></h3>
-                <?php if ($foc->getDescription()): ?>
-                    <p class="description"><?php echo Utils::escape($foc->getDescription()); ?></p>
+                <img src="img/priority/<?php echo $Users->getPriority(); ?>.png" alt="Priority <?php echo $Users->getPriority(); ?>" title="Priority <?php echo $Users->getPriority(); ?>" />
+                <h3><a href="<?php echo Utils::createLink('detail', array('id' => $Users->getId())) ?>"><?php echo Utils::escape($Users->getTitle()); ?></a></h3>
+                <?php if ($Users->getDescription()): ?>
+                    <p class="description"><?php echo Utils::escape($Users->getDescription()); ?></p>
                 <?php endif; ?>
-                <p><span class="label">Created On:</span> <?php echo Utils::escape(Utils::formatDateTime($foc->getCreatedOn())); ?></p>
+                <p><span class="label">Created On:</span> <?php echo Utils::escape(Utils::formatDateTime($Users->getCreatedOn())); ?></p>
                 <p><span class="label">Due On:</span>
                     <?php if ($tooLate): ?><span class="too-late"><?php endif; ?>
-                    <?php echo Utils::escape(Utils::formatDateTime($foc->getDueOn())); ?>
+                    <?php echo Utils::escape(Utils::formatDateTime($Users->getDueOn())); ?>
                     <?php if ($tooLate): ?></span><?php endif; ?>
                 </p>
             </li>

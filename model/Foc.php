@@ -86,7 +86,7 @@ final class Users {
     }
 
     public function setPriority($priority) {
-        FocValidator::validatePriority($priority);
+        UsersValidator::validatePriority($priority);
         $this->priority = $priority;
     }
 
@@ -164,7 +164,7 @@ final class Users {
     }
 
     public function setStatus($status) {
-        FocValidator::validateStatus($status);
+        UsersValidator::validateStatus($status);
         $this->status = $status;
     }
 

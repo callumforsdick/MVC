@@ -13,42 +13,42 @@
         <img src="img/exclamation.png" alt="" title="Should be already done!" />
     <?php endif; ?>
     <?php 
-    echo Utils::escape($foc->getTitle()); 
+    echo Utils::escape($Users->getTitle()); 
     ?>
 </h1>
 
 <table class="detail">
     <tr>
         <th>Priority</th>
-        <td><img src="img/priority/<?php echo $foc->getPriority(); ?>.png" alt="Priority <?php echo $foc->getPriority(); ?>" title="Priority <?php echo $foc->getPriority(); ?>" /></td>
+        <td><img src="img/priority/<?php echo $$Usersfoc->getPriority(); ?>.png" alt="Priority <?php echo $Users->getPriority(); ?>" title="Priority <?php echo $Users->getPriority(); ?>" /></td>
     </tr>
     <tr>
         <th>Created On</th>
-        <td><?php echo Utils::escape(Utils::formatDateTime($foc->getCreatedOn())); ?></td>
+        <td><?php echo Utils::escape(Utils::formatDateTime($Users->getCreatedOn())); ?></td>
     </tr>
     <tr>
         <th>Due On</th>
         <td>
             <?php if ($tooLate): ?><span class="too-late"><?php endif; ?>
-            <?php echo Utils::escape(Utils::formatDateTime($foc->getDueOn())); ?>
+            <?php echo Utils::escape(Utils::formatDateTime($Users->getDueOn())); ?>
             <?php if ($tooLate): ?></span><?php endif; ?>
         </td>
     </tr>
     <tr>
         <th>Last Modified On</th>
-        <td><?php echo Utils::escape(Utils::formatDateTime($foc->getLastModifiedOn())); ?></td>
+        <td><?php echo Utils::escape(Utils::formatDateTime($Users->getLastModifiedOn())); ?></td>
     </tr>
     <tr>
         <th>Description</th>
-        <td><?php echo Utils::escape($foc->getDescription()); ?></td>
+        <td><?php echo Utils::escape($Users->getDescription()); ?></td>
     </tr>
     <tr>
         <th>Comment</th>
-        <td><?php echo Utils::escape($foc->getComment()); ?></td>
+        <td><?php echo Utils::escape($Users->getComment()); ?></td>
     </tr>
     <tr>
         <th>Status</th>
-        <td><img src="img/status/<?php echo $foc->getStatus(); ?>.png" alt="" title="<?php echo Utils::capitalize($foc->getStatus()); ?>" class="icon" /></td>
+        <td><img src="img/status/<?php echo $Users->getStatus(); ?>.png" alt="" title="<?php echo Utils::capitalize($Users->getStatus()); ?>" class="icon" /></td>
     </tr>
     <tr>
         <td colspan="2">&nbsp;</td>
@@ -58,8 +58,8 @@
         <td>
             <div class="statuses">
             <?php foreach (Foc::allStatuses() as $status): ?>
-                <?php if ($status != $foc->getStatus()): ?>
-                    <a href="<?php echo Utils::createLink('change-status', array('id' => $foc->getId(), 'status' => $status)); ?>" title="Change status to <?php echo Utils::capitalize($status); ?>." class="change-status-link"
+                <?php if ($status != $Users->getStatus()): ?>
+                    <a href="<?php echo Utils::createLink('change-status', array('id' => $Users->getId(), 'status' => $status)); ?>" title="Change status to <?php echo Utils::capitalize($status); ?>." class="change-status-link"
                        ><img src="img/status/<?php echo $status; ?>.png" alt="" title="Make it <?php echo Utils::capitalize($status); ?>." class="icon" /></a>
                 <?php else: ?>
                     <img src="img/status/<?php echo $status; ?>-disabled.png" alt="" title="This is already <?php echo Utils::capitalize($status); ?>." class="icon" />
@@ -67,15 +67,15 @@
             <?php endforeach; ?>
             </div>
             <div class="actions">
-                <a href="<?php echo Utils::createLink('add-edit', array('id' => $foc->getId())); ?>"><img src="img/action/edit.png" alt="" title="Edit it." class="icon" /></a>
-                <a href="<?php echo Utils::createLink('delete', array('id' => $foc->getId())); ?>" id="delete-link"><img src="img/action/delete.png" alt="" title="Delete it." class="icon" /></a>
+                <a href="<?php echo Utils::createLink('add-edit', array('id' => $Users->getId())); ?>"><img src="img/action/edit.png" alt="" title="Edit it." class="icon" /></a>
+                <a href="<?php echo Utils::createLink('delete', array('id' => $Users->getId())); ?>" id="delete-link"><img src="img/action/delete.png" alt="" title="Delete it." class="icon" /></a>
             </div>
         </td>
     </tr>
 </table>
 
 <p>
-    <?php $backLink = Utils::createLink('list', array('status' => $foc->getStatus())); ?>
+    <?php $backLink = Utils::createLink('list', array('status' => $Users->getStatus())); ?>
     <a href="<?php echo $backLink; ?>"><img src="img/action/back.png" alt="" title="Back to the list." class="icon"/></a>&nbsp;
     <a href="<?php echo $backLink; ?>">To the list</a>
 </p>

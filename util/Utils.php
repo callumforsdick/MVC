@@ -69,7 +69,7 @@ final class Utils {
      * @return Foc {@link Foc} instance
      * @throws NotFoundException if the param or {@link Foc} instance is not found
      */
-    public static function getFocByGetId() {
+    public static function getUsersByGetId() {
         $id = null;
         try {
             $id = self::getUrlParam('id');
@@ -77,14 +77,14 @@ final class Utils {
             throw new NotFoundException('No Foc identifier provided.');
         }
         if (!is_numeric($id)) {
-            throw new NotFoundException('Invalid Foc identifier provided.');
+            throw new NotFoundException('Invalid Users identifier provided.');
         }
-        $dao = new FocDao();
-        $foc = $dao->findById($id);
-        if ($foc === null) {
-            throw new NotFoundException('Unknown Foc identifier provided.');
+        $dao = new UsersDao();
+        $Users = $dao->findById($id);
+        if ($Users === null) {
+            throw new NotFoundException('Unknown Users identifier provided.');
         }
-        return $foc;
+        return $Users;
     }
 
     /**

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <title>foc</title>
+    <title>Users</title>
 </head>
 <?php
 /**
  * Mapper for {@link Foc} from array.
  * @see FocValidator
  */
-final class FocMapper {
+final class UsersMapper {
 
     private function __construct() {
     }
@@ -31,45 +31,45 @@ final class FocMapper {
      * @param Foc $foc
      * @param array $properties
      */
-    public static function map(Foc $foc, array $properties) {
+    public static function map(Users $Users, array $properties) {
         if (array_key_exists('id', $properties)) {
-            $foc->setId($properties['id']);
+            $Users->setId($properties['id']);
         }
         if (array_key_exists('priority', $properties)) {
-            $foc->setPriority($properties['priority']);
+            $Users->setPriority($properties['priority']);
         }
         if (array_key_exists('created_on', $properties)) {
             $createdOn = self::createDateTime($properties['created_on']);
             if ($createdOn) {
-                $foc->setCreatedOn($createdOn);
+                $Users->setCreatedOn($createdOn);
             }
         }
         if (array_key_exists('due_on', $properties)) {
             $dueOn = self::createDateTime($properties['due_on']);
             if ($dueOn) {
-                $foc->setDueOn($dueOn);
+                $Users->setDueOn($dueOn);
             }
         }
         if (array_key_exists('last_modified_on', $properties)) {
             $lastModifiedOn = self::createDateTime($properties['last_modified_on']);
             if ($lastModifiedOn) {
-                $foc->setLastModifiedOn($lastModifiedOn);
+                $Users->setLastModifiedOn($lastModifiedOn);
             }
         }
         if (array_key_exists('title', $properties)) {
-            $foc->setTitle(trim($properties['title']));
+            $Users->setTitle(trim($properties['title']));
         }
         if (array_key_exists('description', $properties)) {
-            $foc->setDescription(trim($properties['description']));
+            $Users->setDescription(trim($properties['description']));
         }
         if (array_key_exists('comment', $properties)) {
-            $foc->setComment(trim($properties['comment']));
+            $Users->setComment(trim($properties['comment']));
         }
         if (array_key_exists('status', $properties)) {
-            $foc->setStatus($properties['status']);
+            $Users->setStatus($properties['status']);
         }
         if (array_key_exists('deleted', $properties)) {
-            $foc->setDeleted($properties['deleted']);
+            $Users->setDeleted($properties['deleted']);
         }
     }
 
