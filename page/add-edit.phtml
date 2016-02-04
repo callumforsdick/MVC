@@ -1,0 +1,76 @@
+<?php
+
+//~ Template for add-edit.php
+// variables:
+//  $errors - validation errors
+//  $√ - submitted FOC
+//  $edit - true for EDIT, false for ADD
+
+function error_field($title, array $errors) {
+    foreach ($errors as $error) {
+        /* @var $error Error */
+        if ($error->getSource() == $title) {
+            return ' error-field';
+        }
+    }
+    return '';
+}
+
+/* @var $√ FOc */
+?>
+
+<h1>
+    <?php if ($edit): ?>
+        <?php echo Utils::escape($foc->getTitle()); ?>
+    <?php else: ?>
+        Add New User
+    <?php endif; ?>
+</h1>
+
+<?php if (!empty($errors)): ?>
+<ul class="errors">
+    <?php foreach ($errors as $error): ?>
+        <?php /* @var $error Error */ ?>
+        <li><?php echo $error->getMessage(); ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+
+<form action="#" method="post">
+    <fieldset>
+        <div class="field">
+            <label>Username:</label>
+            <input type="text" name="foc[username]" value="<?php echo Utils::escape($foc->getTitle()); ?>"
+                   class="text<?php echo error_field('username', $errors); ?>"/>
+        </div>
+
+          <div class="field">
+            <label>First Name:</label>
+            <input type="text" name="foc[firstname]" value="<?php echo Utils::escape($foc->getFirstname()); ?>"
+                   class="text<?php echo error_field('firstname', $errors); ?>"/>
+        </div>
+
+        <div class="field">
+            <label>Last Name:</label>
+            <input type="text" name="foc[lastname]" value="<?php echo Utils::escape($foc->getLastname()); ?>"
+                   class="text<?php echo error_field('lastname', $errors); ?>"/>
+        </div>
+
+        <div class="field">
+            <label>Email:</label>
+            <input type="text" name="foc[email]" value="<?php echo Utils::escape($foc->getEmail()); ?>"
+                   class="text<?php echo error_field('email', $errors); ?>"/>
+        </div>
+
+        <div class="field">
+            <label>Password:</label>
+            <input type="text" name="foc[password]" value="<?php echo Utils::escape($foc->getPassword()); ?>"
+                   class="text<?php echo error_field('password', $errors); ?>"/>
+        </div>
+
+        <div class="wrapper">
+            <input type="submit" name="cancel" value="CANCEL" class="submit" />
+            <input type="submit" name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit" />
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,51 @@
+<?php
+//require('header.php');
+?>
+<body id="page">
+    <div class="tail-top-right"></div>
+    <div id="main">
+        <!-- header -->
+        <div id="header"></div>
+        <!-- content -->
+        <div id="content">
+            <div class="wrapper">
+                <div class="col-1">
+                    <div class="box">
+                        <div class="inner">
+                            <div class="title"><a href="">Focus.in Users</a></div>
+                            <ul class="list">
+                                <li><span><a href="<?php echo Utils::createLink('home'); ?>">Home</a></span></li>
+                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Foc::STATUS_PENDING)); ?>"
+                                             ><img src="img/status/PENDING.png" alt="" title="Pending" class="icon" />Pending</a></span></li>
+                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Foc::STATUS_DONE)); ?>"
+                                             ><img src="img/status/DONE.png" alt="" title="Done" class="icon" />Done</a></span></li>
+                                <li><span><a href="<?php echo Utils::createLink('list', array('status' => Foc::STATUS_VOIDED)); ?>"
+                                             ><img src="img/status/VOIDED.png" alt="" title="Voided" class="icon" />Voided</a></span></li>
+                                <li class="last"><span><a href="<?php echo Utils::createLink('add-edit'); ?>"
+                                             ><img src="img/action/add.png" alt="" title="Add TODO" class="icon" />Add User</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="indent">
+                        <?php if ($flashes): ?>
+                            <ul id="flashes">
+                            <?php foreach ($flashes as $flash): ?>
+                                <li><?php echo $flash; ?></li>
+                            <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+
+                        <?php require $template; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+     <?php
+//require('footer.php');
+      ?>
+    </div>
+</body>
+</html>
